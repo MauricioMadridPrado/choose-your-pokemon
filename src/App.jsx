@@ -1,6 +1,6 @@
 import React from "react";
 import Botoes from "./Botoes";
-import Produto from "./Produto";
+import Produto from "./Pokemon";
 
 const App = () => {
   const [dados, setDados] = React.useState(null);
@@ -24,13 +24,25 @@ const App = () => {
     
     {
       nome: "meowth",
+    },
+    {
+      nome: "weezing",
+    },
+    {
+      nome: "mewtwo",
+    },
+    
+    {
+      nome: "togepi",
     }
   ];
   async function handleClick(event) {
     setLoading(true);
     const poke = event.target.innerText;
     const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`);
+    const data1 = await fetch(`https://pokeapi.co/api/v2/pokemon/`);
     const dataJson = await data.json();
+    console.log(data1)
       setDados(dataJson);
     setLoading(false);
   }
@@ -42,7 +54,9 @@ const App = () => {
         {pokemons.map(({ nome }) => (
           <Botoes key={nome} id={nome} onClick={handleClick} nome={nome} />
         ))}
+
       </div>
+
       <section>
         {loading && <p>Carregando...</p>}
         {!loading && dados && <Produto dados={dados} />}

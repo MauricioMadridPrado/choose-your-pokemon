@@ -11,9 +11,8 @@ const Produto = ({ dados }) => {
         <li><h3>Principais habilidades</h3></li>
         <li style={{marginLeft:"1rem"}}>{dados.abilities[0].ability.name}</li>
         <li style={{marginLeft:"1rem"}}>{dados.abilities[1].ability.name}</li>
-
       </ul>
-      <img src={dados.sprites.front_default} />
+      <img style={{width:"300px"}} src={dados.sprites.front_default} />
     </div>
   );
 };
